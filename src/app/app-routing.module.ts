@@ -7,9 +7,8 @@ import { AddDocumentComponent } from './add-document/add-document.component';
 import { DocumentComponent } from './document/document.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 
-
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
+  { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, 
     children: [

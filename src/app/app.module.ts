@@ -12,6 +12,7 @@ import { MainComponent } from './main/main.component';
 import { AddDocumentComponent, DialogOnFinalize } from './add-document/add-document.component';
 import { DocumentComponent } from './document/document.component';
 import { DocumentViewComponent, DialogOnPrint } from './document-view/document-view.component';
+import { AuthService } from './_services/index.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +32,7 @@ import { DocumentViewComponent, DialogOnPrint } from './document-view/document-v
     BrowserAnimationsModule
   ],
   entryComponents: [DialogOnFinalize, DialogOnPrint],
-  providers: [AnimationsService],
+  providers: [AnimationsService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
