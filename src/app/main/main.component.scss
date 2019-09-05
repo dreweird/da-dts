@@ -23,5 +23,12 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
     width: 70%;
 }
 button{
-    width: 30%;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+
 }
+

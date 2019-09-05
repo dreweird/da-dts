@@ -29,6 +29,9 @@
                   <button mat-button class="nav-button" *ngFor="let item of menu" 
                     [routerLink]="[item.route]"
                     routerLinkActive="active">
+                    <mat-icon *ngIf="!item.notif">{{item.icon}}</mat-icon>
+                    <mat-icon *ngIf="item.notif" matBadge="15" matBadgeColor="warn">{{item.icon}}</mat-icon>
+           
                     {{item.title}}
                   </button>
                 </span>

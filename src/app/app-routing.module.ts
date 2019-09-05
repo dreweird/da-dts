@@ -6,6 +6,7 @@ import { MainComponent } from './main/main.component';
 import { AddDocumentComponent } from './add-document/add-document.component';
 import { DocumentComponent } from './document/document.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
+import { DocumentPendingComponent } from './document-pending/document-pending.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
       { path: 'main', component: MainComponent },
       { path: 'doc', component: DocumentComponent },
       { path: 'doc/:id', component: DocumentViewComponent },
-      { path: 'onadd/:id', component: AddDocumentComponent, }
+      { path: 'onadd/:id', component: AddDocumentComponent },
+      { path: 'pending', component: DocumentPendingComponent },
     ]},
   { path: '**', redirectTo: '' }
 ];

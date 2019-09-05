@@ -11,11 +11,15 @@ export class HomeComponent implements OnInit {
   menu: any[] = [
     {
       title: 'Office Document',
-      route: 'doc'
+      route: 'doc',
+      icon: 'folder_shared',
+      notif: false
     },
     {
-      title: 'Reports',
-      route: 'reports'
+      title: 'Pending for Release',
+      route: 'pending',
+      icon: 'table_chart',
+      notif: true
     }         
   ];
 
