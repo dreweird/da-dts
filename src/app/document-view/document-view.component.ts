@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '../_animations';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-document-view',
@@ -13,8 +13,12 @@ export class DocumentViewComponent implements OnInit {
 
   @ViewChild('alertinfo', {static: false}) private alertinfo: ElementRef;
   @ViewChild('alertsuccess', {static: false}) private alertsuccess: ElementRef;
+  @ViewChild('printSection', {static: false}) private printSection: ElementRef;
+  myAngularxQrCode: string;
 
-  constructor(public dialog: MatDialog) { }
+  constructor() {
+    this.myAngularxQrCode = "Sample Code";
+   }
 
   ngOnInit() {
   }
@@ -28,30 +32,62 @@ export class DocumentViewComponent implements OnInit {
   }
 
   onPrint(){
-    this.dialog.open(DialogOnPrint, {
-      width: '450px'
-    }).afterClosed().subscribe(result=> {
-      if(result){
-       // this.router.navigate(['/home/doc', this.tracking_number]);
-      }
-    });
+  
+      let my_window = window.open('', 'mywindow', 'status=1,width=auto,height=100%');
+      my_window.document.write(`
+        <html>
+        <head>
+          <title>Cover Page - DTS</title>
+          <style>
+          .title { display: none !important; }
+            .header {   
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+            .center { text-align: center;}
+            .track { font-size: 30px; font-weight: bold; }
+            table {
+              width: 100%;
+              margin-bottom: 15px;
+              color: black;
+              background-color: white;
+              font-size: 20px; 
+            }
+               
+            th,
+            td {
+              padding: 10px;
+              vertical-align: top;
+              border-top: 1px solid #dee2e6;
+              text-align: left;
+              margin-left: 10px;
+            }
+          
+            thead th {
+              vertical-align: bottom;
+              border-bottom: 4px solid #dee2e6;
+            }
+          
+            tbody + tbody {
+              border-top: 4px solid #dee2e6;
+            }
+            
+          </style>
+        </head>
+        <body onafterprint="self.close()">
+          <img class="header" src="../../assets/header.png"> 
+          <hr>
+          <h1 class="center">Document Tracking System</h1>
+          <h2 class="center">Cover Page</h2> `);
+      my_window.document.write(this.printSection.nativeElement.innerHTML);
+      my_window.document.write('</body></html>'); 
+  
   }
 
 }
 
-@Component({
-  selector: 'dialog-onprint',
-  styleUrls: ['./document-view.component.scss'],
-  templateUrl: './document-print.component.html',
-})
-export class DialogOnPrint {
-  data = true;
-  constructor(
-    public dialogRef: MatDialogRef<DialogOnPrint>) {}
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 
-}
+
 

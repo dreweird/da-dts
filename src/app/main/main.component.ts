@@ -13,6 +13,9 @@ export class MainComponent implements OnInit {
   tracking_number: any;
   month: any;
   day: any;
+  track_id: any;
+  receive_alert: boolean = false;
+
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -26,6 +29,13 @@ export class MainComponent implements OnInit {
 
   onAdd(){
     this.router.navigate(['/home/onadd', this.tracking_number]);
+  }
+
+  onReceive(id){
+    this.receive_alert = true;
+  }
+  closeAlert(){
+    this.receive_alert = false;
   }
 
 }

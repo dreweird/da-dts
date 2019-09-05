@@ -1,5 +1,15 @@
 <div class="container">
   <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+          <br>
+        <div *ngIf="receive_alert" class="alert alert-success alert-dismissible" role="alert">
+        <strong>Sample Document 2019 (2019-0805-0340-0001) has been
+                received successfully.
+        </strong> Don't forget to tag this document as <strong>TERMINAL</strong> 
+        in case your office is the end of its paper trail.
+        <button type="button" class="alert-button close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+        </button>
+        </div>
     <div class="col-md-6">
       <mat-card>
         <mat-card-header>
@@ -32,9 +42,9 @@
           <h2 class="primary">RECEIVE DOCUMENT</h2>
         </mat-card-header>
         <mat-form-field class="example-full-width">
-          <input matInput placeholder="Tracking Number">
+          <input [(ngModel)]="track_id" #ctrl="ngModel" matInput placeholder="Tracking Number">
         </mat-form-field>
-        <button mat-button color="accent">
+        <button mat-button color="accent" (click)="onReceive(track_id)">
           <mat-icon>arrow_downward</mat-icon> Receive
         </button>
       </mat-card>

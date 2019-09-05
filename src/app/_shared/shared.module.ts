@@ -18,7 +18,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
+import {MatBadgeModule} from '@angular/material/badge';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -46,7 +46,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
-
+    MatBadgeModule
 
   ],
   declarations: [],
@@ -74,7 +74,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
-
+    MatBadgeModule
 
 
  
