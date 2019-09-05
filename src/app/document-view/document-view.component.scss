@@ -1,0 +1,41 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+// Define the default theme (same as the example above).
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-pink, A200, A100, A400);
+
+
+h1 {
+  position: relative;
+    code {
+        position: absolute;
+        top: 11px;
+        font-size: 20px;
+        color: mat-color($primary);
+        margin-left: 20px;
+      }
+}
+.title{
+    font-size: 20px;
+    color: mat-color($primary);
+}
+td { white-space:pre }
+
+mat-card{
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+.print {
+    right: 0;
+    float: right;
+}

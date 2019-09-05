@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <h2 class="primary">TRACK DOCUMENT</h2>
+        </mat-card-header>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Tracking Number">
+        </mat-form-field>
+        <button mat-button color="accent">
+          <mat-icon>navigation</mat-icon> Track
+        </button>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <h2 class="primary">ADD DOCUMENT</h2>
+        </mat-card-header>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Tracking Number" [value]="tracking_number" disabled>
+        </mat-form-field>
+        <button mat-button color="accent" (click)="onAdd()">
+          <mat-icon>add</mat-icon> Add
+        </button>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <h2 class="primary">RECEIVE DOCUMENT</h2>
+        </mat-card-header>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Tracking Number">
+        </mat-form-field>
+        <button mat-button color="accent">
+          <mat-icon>arrow_downward</mat-icon> Receive
+        </button>
+      </mat-card>
+    </div>
+    <div class="col-md-6">
+      <mat-card>
+        <mat-card-header>
+          <h2 class="primary">RELEASE DOCUMENT</h2>
+        </mat-card-header>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Tracking Number">
+        </mat-form-field>
+        <button mat-button color="accent">
+          <mat-icon>arrow_upward</mat-icon> Release
+        </button>
+      </mat-card>
+    </div>
+
+  </div>
+</div>
