@@ -8,9 +8,8 @@ import { DocumentComponent } from './document/document.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { DocumentPendingComponent } from './document-pending/document-pending.component';
 
-
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'home'},
+  { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component: LoginComponent},
   { path: 'home', component: HomeComponent, 
     children: [

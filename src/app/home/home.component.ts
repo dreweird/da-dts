@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routeAnimations, AnimationsService } from '../_animations/index';
+import { Router } from '@angular/router';
+import { AuthService } from '../_services/index.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -28,11 +30,21 @@ export class HomeComponent implements OnInit {
     { title: 'Log-out', route: 'logout'}
 
   ];
-  constructor(private animationService: AnimationsService) {
+  constructor(private router: Router,private animationService: AnimationsService,private authService: AuthService,) {
     this.animationService.updateRouteAnimationType(true, true)
    }
 
   ngOnInit() {
+    this.authService.verify().subscribe(data => {
+      if(!data){
+        this.router.navigate(['/login']);
+      }
+    });
+    
   }
 
+  onLogoutClick() {
+    this.router.navigate(['login']);
+    localStorage.clear();
+  }
 }
