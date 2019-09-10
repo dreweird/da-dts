@@ -3,6 +3,9 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../_animations';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import { DataService } from '../_services/index.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-document',
@@ -11,6 +14,10 @@ import { Router } from '@angular/router';
 })
 export class AddDocumentComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  
+  documentForm: FormGroup;
+  tracking_number: any;
+  for_: [any];
   types = [
     {value: 'Purchase Request'},
     {value: 'Inventory and Inspection Report'},
@@ -20,30 +27,57 @@ export class AddDocumentComponent implements OnInit {
     {value: 'Unclassified'},
   ];
   for = [
-    {value: 'appropriate action'},
-    {value: 'comment/reaction/response'},
-    {value: 'compliance/implementation'},
-    {value: 'dissemination/recommendation'},
-    {value: 'follow-up'},
-    {value: 'draft of reply'},
-    {value: 'investigation/verification and report'},
-    {value: 'notification/reply to party'},
-    {value: 'your information'},
+    {index: 0,value: 'appropriate action'},
+    {index: 1,value: 'comment/reaction/response'},
+    {index: 2,value: 'compliance/implementation'},
+    {index: 3,value: 'dissemination/recommendation'},
+    {index: 4,value: 'follow-up'},
+    {index: 5,value: 'draft of reply'},
+    {index: 6,value: 'investigation/verification and report'},
+    {index: 7,value: 'notification/reply to party'},
+    {index: 8,value: 'your information'},
   ];
 
-  constructor(private route: ActivatedRoute, public dialog: MatDialog, private router: Router) { }
-  tracking_number: any;
+  constructor(private route: ActivatedRoute, public dialog: MatDialog, private router: Router, private dataService: DataService, private snackBar: MatSnackBar) { 
+    this.documentForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
+      type: new FormControl('', [Validators.required]),
+      remarks: new FormControl('', [Validators.required]),
+      file: new FormControl('', []),
+      foo: new FormControl('', [])
+    });
+  }
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.tracking_number = params['id']; 
     });
   }
 
+  onDraft(){
+    console.log(this.for_);
+    console.log(this.tracking_number);
+    console.log(this.documentForm.value);
+    this.dataService.addDoc(this.documentForm.value,this.tracking_number,0)
+    .subscribe(data => {
+      this.snackBar.open('Document saved as draft.', '', {duration: 3000,});
+      this.router.navigate(['/home/doc', this.tracking_number]);
+    },err=>{
+      this.snackBar.open('Error: Please see console.', '', {duration: 3000,});
+    });
+  }
   onFinalize(){
     this.dialog.open(DialogOnFinalize, {
       width: '450px'
     }).afterClosed().subscribe(result=> {
       if(result){
+        this.dataService.addDoc(this.documentForm.value,this.tracking_number,1)
+        .subscribe(data => {
+          this.snackBar.open('Document saved as final.', '', {duration: 3000,});
+          this.router.navigate(['/home/doc', this.tracking_number]);
+        },err=>{
+          this.snackBar.open('Error: Please see console.', '', {duration: 3000,});
+        });
+
         this.router.navigate(['/home/doc', this.tracking_number]);
       }
     });

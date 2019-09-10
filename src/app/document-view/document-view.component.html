@@ -1,66 +1,66 @@
 <div class="container">
-  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
-    <div class="col-md-12" [ngClass]="routeAnimationsElements">
-      <h1>Sample Document 2019 <code>Unclassified</code></h1>
-      <div #alertsuccess class="alert alert-success alert-dismissible" role="alert">
-        <strong>Sample Document 2019 (2019-0805-0340-0001) has been
-          finalized successfully.
-        </strong> Other offices can now process this document.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div #alertinfo class="alert alert-info alert-dismissible " role="alert">
-        Don't forget to print the cover page generated in the system and
-        attached this to your actual document.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert2()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div #alertTerminal class="alert alert-success alert-dismissible " role="alert">
+
+    <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+      <div class="col-md-12" [ngClass]="routeAnimationsElements">
+          <h1>{{title}} <code>{{type}}</code></h1>
+          <div #alertsuccess  class="alert alert-success alert-dismissible" role="alert">
+               <strong>{{title}} ({{tracking_number}}) has been 
+                   finalized successfully.
+               </strong> Other offices can now process this document.
+               <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div #alertinfo class="alert alert-info alert-dismissible " role="alert">
+                    Don't forget to print the cover page generated in the system and 
+                    attached this to your actual document.
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert2()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+            </div>
+              <div #alertTerminal class="alert alert-success alert-dismissible " role="alert">
       <strong>Sample Document 2019 (2019-0805-0340-0001) has been
           tagged as terminal.</strong>
           <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert3()">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-      <div #printSection>
-        <mat-card>
-          <table class="table">
-            <thead>
-              <tr>
-                <th class="title" scope="col" colspan="2">  Overview
-                  <button class="print" (click)="onPrint()" mat-stroked-button color="primary">
-                    <mat-icon>print</mat-icon> Print Cover Page
-                  </button>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">Tracking Number</th>
-                <td class="track">: 2019-0805-0340-0001</td>
-              </tr>
-              <tr>
-                <th scope="row">Title</th>
-                <td>: Sample Document 2019 </td>
-              </tr>
-              <tr>
-                <th scope="row">Type</th>
-                <td>: Unclassified</td>
-              </tr>
-              <tr>
-                <th scope="row">Remarks</th>
-                <td>: none</td>
-              </tr>
-              <tr>
-                <th scope="row">Originating Office</th>
-                <td>: <strong>Test Office</strong>
-                  <div>08/05/2019 02:00 PM</div>
-                  <div>testoffice@gmail.com</div>
-                </td>
-              </tr>
-              <tr>
+            <div #printSection>
+          <mat-card>
+                <table class="table">
+                        <thead>
+                          <tr>
+                            <th class="title" scope="col" colspan="2">Overview
+                                <button class="print" (click)="onPrint()" mat-stroked-button color="primary">
+                                    <mat-icon>print</mat-icon> Print Cover Page   </button>
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">Tracking Number</th>
+                            <td>: {{tracking_number}}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Title</th>
+                            <td>: {{title}} </td>       
+                          </tr>
+                          <tr>
+                            <th scope="row">Type</th>
+                            <td>: {{type}}</td>
+                          </tr>
+                          <tr>
+                                <th scope="row">Remarks</th>
+                                <td>: {{remarks}}</td>
+                              </tr>
+                              <tr>
+                              <th scope="row">Originating Office</th>
+                              <td>: <strong>{{office}}</strong> 
+                            <div>{{date}}</div>
+                            <div>{{email}}</div>
+                        </td>
+                            </tr>   
+                               <tr>
                 <th scope="row">Status</th>
                 <td>: <strong>
                     <span class="available">AVAILABLE</span>
@@ -68,19 +68,18 @@
                     <span class="terminal">TERMINAL</span>
                 </strong></td>
               </tr>
-              <tr>
-                <th scope="row">QR-Code</th>
-                <td>
-                  <qrcode [qrdata]="myAngularxQrCode" [size]="150" [level]="'M'"></qrcode>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          
-        </mat-card>
-      </div>
-
-
+                                  <tr>
+                                    <th scope="row">QR-Code</th>
+                                    <td>
+                                      <qrcode [qrdata]="myAngularxQrCode" [size]="150" [level]="'M'"></qrcode>
+                                    </td>
+                                  </tr>    
+                        </tbody>
+                      </table>
+          </mat-card>
+ 
+     </div>
+ 
     </div>
 
   </div>

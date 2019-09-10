@@ -2,14 +2,14 @@
   <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
     <div class="col-md-12">
       <h1 class="center-div">Add Document</h1>
-      <div class="center-div">
+      <div class="center-div" [formGroup]="documentForm">
         <mat-card>
           <mat-form-field class="example-full-width">
             <input matInput placeholder="Tracking Number" [value]="tracking_number" disabled>
             <mat-hint align="start"><strong>Please make sure to attach the correct tracking number to the actual document</strong> </mat-hint>
           </mat-form-field>
           <mat-form-field class="example-full-width">
-                <input matInput placeholder="Title" #title maxlength="250" required>
+                <input matInput placeholder="Title" #title formControlName="title" maxlength="250" required>
                 <mat-hint align="start"><strong>You may remove any sensitive information (monetary, amounts, names, etc.)
                     from the title if they are not necessary in tracking document
                 </strong> </mat-hint>
@@ -17,7 +17,7 @@
               </mat-form-field>
               <mat-form-field  class="example-full-width">
                     <mat-label>Type</mat-label>
-                    <mat-select>
+                    <mat-select formControlName="type">
                       <mat-option *ngFor="let type of types" [value]="type.value">
                         {{type.value}}
                       </mat-option>
@@ -26,15 +26,15 @@
                   <label class="example-margin">For:</label>
                   <section class="example-margin" *ngFor="let f of for">
                     
-                        <mat-checkbox >{{f.value}} </mat-checkbox>
+                        <mat-checkbox value = "{{f.index}}" formControlName="foo">{{f.value}} </mat-checkbox>
                   </section>
                   <mat-form-field class="example-full-width">
-                        <input matInput placeholder="Remarks" #remarks maxlength="500" required>
+                        <input matInput placeholder="Remarks" #remarks formControlName="remarks" maxlength="500" required>
               
                         <mat-hint align="end">{{remarks.value.length}} / 500</mat-hint>
                       </mat-form-field> 
                       <mat-form-field class="example-full-width">
-                            <input matInput placeholder="File (optional)">
+                            <input matInput placeholder="File (optional)" formControlName="file" >
                   
                             <mat-hint> <strong>-Allowed Formats: PDF, JPG, PNG - Maximum Size: 10 MB
                                 - You can upload larger files via Google Drive and then include the link in the remarks
@@ -43,8 +43,8 @@
                         </mat-form-field> 
                         <section>
                             <br>
-                                <button mat-stroked-button >Save as Draft </button>
-                                <button mat-stroked-button color="primary" (click)="onFinalize()">Finalize Document </button>
+                                <button [disabled]="!documentForm.valid"   mat-stroked-button (click)="onDraft()" >Save as Draft </button>
+                                <button [disabled]="!documentForm.valid"   mat-stroked-button color="primary" (click)="onFinalize()">Finalize Document </button>
                         </section>
                  
 
