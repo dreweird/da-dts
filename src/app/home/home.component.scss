@@ -197,8 +197,8 @@ mat-sidenav-container {
   mat-toolbar {
     button {
       &.active {
-        color: #1B5E20;
-        background-color:#AED581;
+        color: mat-color($primary);
+        background-color:lightblue;
       }
     }
 

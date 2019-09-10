@@ -11,8 +11,15 @@ import { AnimationsService } from './_animations';
 import { MainComponent } from './main/main.component';
 import { AddDocumentComponent, DialogOnFinalize } from './add-document/add-document.component';
 import { DocumentComponent } from './document/document.component';
+
 import { DocumentViewComponent, DialogOnPrint } from './document-view/document-view.component';
 import { AuthService } from './_services/index.service';
+
+
+import { QRCodeModule } from 'angularx-qrcode';
+import { DocumentPendingComponent } from './document-pending/document-pending.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,16 +30,18 @@ import { AuthService } from './_services/index.service';
     DialogOnFinalize,
     DocumentComponent,
     DocumentViewComponent,
-    DialogOnPrint
+    DocumentPendingComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    QRCodeModule
   ],
-  entryComponents: [DialogOnFinalize, DialogOnPrint],
-  providers: [AnimationsService, AuthService],
-  bootstrap: [AppComponent]
+
+ entryComponents: [DialogOnFinalize],
+ providers: [AnimationsService, AuthService],
+ bootstrap: [AppComponent]
 })
 export class AppModule { }
