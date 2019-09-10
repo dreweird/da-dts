@@ -32,15 +32,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.authService.verify().subscribe(data => {
+      console.log(data);
       if(!data){
         this.router.navigate(['/login']);
       }
     });
-    
   }
 
   onLogoutClick() {
-    this.router.navigate(['login']);
+    this.router.navigate(['/login']);
     localStorage.clear();
   }
 }

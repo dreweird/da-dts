@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
       <div class="col-md-12" [ngClass]="routeAnimationsElements">
-          <h1>Sample Document 2019 <code>Unclassified</code></h1>
+          <h1>{{title}} <code>{{type}}</code></h1>
           <div #alertsuccess  class="alert alert-success alert-dismissible" role="alert">
-               <strong>Sample Document 2019 (2019-0805-0340-0001) has been 
+               <strong>{{title}} ({{tracking_number}}) has been 
                    finalized successfully.
                </strong> Other offices can now process this document.
                <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
@@ -31,30 +31,30 @@
                         <tbody>
                           <tr>
                             <th scope="row">Tracking Number</th>
-                            <td>: 2019-0805-0340-0001</td>
+                            <td>: {{tracking_number}}</td>
                           </tr>
                           <tr>
                             <th scope="row">Title</th>
-                            <td>: Sample Document 2019 </td>       
+                            <td>: {{title}} </td>       
                           </tr>
                           <tr>
                             <th scope="row">Type</th>
-                            <td>: Unclassified</td>
+                            <td>: {{type}}</td>
                           </tr>
                           <tr>
                                 <th scope="row">Remarks</th>
-                                <td>: none</td>
+                                <td>: {{remarks}}</td>
                               </tr>
                               <tr>
                               <th scope="row">Originating Office</th>
-                              <td>: <strong>Test Office</strong> 
-                            <div>08/05/2019 02:00 PM</div>
-                            <div>testoffice@gmail.com</div>
+                              <td>: <strong>{{office}}</strong> 
+                            <div>{{date}}</div>
+                            <div>{{email}}</div>
                         </td>
                             </tr>   
                             <tr>
                                     <th scope="row">File</th>
-                                    <td>: docSample.pdf</td>
+                                    <td>: {{file}}</td>
                                   </tr>    
                         </tbody>
                       </table>
