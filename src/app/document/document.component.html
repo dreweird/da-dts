@@ -1,9 +1,138 @@
 <div class="container">
-        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
-          <div class="col-md-12">
-              <h1>Office Documents</h1>
-              <mat-card>
-                  
-              </mat-card>
-    </div>
+    <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+        <div class="col-md-12">
+          <h1 class="main-heading">Office Documents</h1>
+          <div *ngIf="delete_info" #alertsuccess class="alert alert-success alert-dismissible" role="alert">
+              <strong>Sample Document 2019 (2019-0805-0340-0001) has been
+                deleted successfully.
+              </strong>
+              <button type="button" id="notif" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+  
       </div>
+      <mat-card>
+        <div class="row">
+            <div class="col-md-8">
+                <h2> <mat-icon>drafts</mat-icon> My Draft</h2>
+                 </div>
+                 <div class="col-md-4">
+                     <mat-form-field class="example-full-width">
+                         <mat-icon matPrefix>search</mat-icon>
+                         <input #txtSearch matInput placeholder="Search...">
+                       </mat-form-field>
+                   </div>
+        </div>
+
+        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+
+        <div class="col-md-12">
+
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Document</th>
+                <th scope="col">Tracking Number</th>
+                <th scope="col">Originating Office</th>
+                <th scope="col">For</th>
+                <th scope="col">Action</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+                <td scope="row">Sample Document 2019
+                  <pre>Unclassified</pre>
+                </td>
+                <td>2019-0805-0340-0001</td>
+                <td> <strong>Test Office</strong>
+                  <div>08/05/2019 02:00 PM</div>
+                  <div>testoffice@gmail.com</div>
+                </td>
+                <td> <ul>
+                  <li>appropriate action</li>
+                  <li>follow-up</li>
+                </ul>
+                </td>
+                <td>
+                  <button mat-stroked-button color="primary" (click)="edit()">
+                    <mat-icon>edit</mat-icon> Edit
+                  </button>
+                  <button mat-stroked-button color="accent" (click)="delete()">
+                    <mat-icon>delete</mat-icon> Delete
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+
+      
+
+        </div></div>
+        </mat-card>
+        <br><br>
+        <mat-card>
+            <div class="row">
+                <div class="col-md-8">
+                    <h2> <mat-icon>folder_special</mat-icon> My Track</h2>
+                     </div>
+                     <div class="col-md-4">
+                         <mat-form-field class="example-full-width">
+                             <mat-icon matPrefix>search</mat-icon>
+                             <input #txtSearch matInput placeholder="Search...">
+                           </mat-form-field>
+                       </div>
+            </div>
+    
+            <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    
+            <div class="col-md-12">
+    
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Document</th>
+                        <th scope="col">Tracking Number</th>
+                        <th scope="col">Originating Office</th>
+                        <th scope="col">Last Transaction</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+
+                        <td scope="row">Sample Document 2019
+                            <pre>Unclassified</pre>
+                        </td>
+                        <td>2019-0805-0340-0001</td>
+                        <td> <strong>Test Office</strong>
+                            <div>08/05/2019 02:00 PM</div>
+                            <div>testoffice@gmail.com</div>
+                          </td>
+                          <td> <strong>RECEIVED by TEST</strong>
+                            <div>08/06/2019 10:00 AM</div>
+                            <div>testoffice@gmail.com</div>
+                          </td>
+                
+                          <td>
+                                <button mat-stroked-button color="primary" (click)="track()">   <mat-icon>track_changes</mat-icon> Track </button>
+                            
+                              </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+    
+          
+    
+            </div></div>
+            </mat-card>
+
+     
+
+  </div>
+  <br><br>

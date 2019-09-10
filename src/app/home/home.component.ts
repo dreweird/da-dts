@@ -35,11 +35,11 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.authService.verify().subscribe(data => {
-      if(!data){
-        this.router.navigate(['/login']);
-      }
-    });
+    // this.authService.verify().subscribe(data => {
+    //   if(!data){
+    //     this.router.navigate(['/login']);
+    //   }
+    // });
     
   }
 

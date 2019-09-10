@@ -1,7 +1,19 @@
 <div class="container">
+    <br>
+        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+                <div class="col-md-8">
+                  <h1 class="main-heading">Pending Documents</h1>
+                </div>
+                <div class="col-md">
+                    <mat-form-field class="example-full-width">
+                        <span matPrefix> <mat-icon>search</mat-icon> &nbsp;</span>
+                        <input #txtSearch matInput placeholder="Search documents here...">
+                      </mat-form-field>
+                  </div>
+              </div>
+
         <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
           <div class="col-md-12">
-              <h1>Pending Documents</h1>
               <mat-card>
                     <table class="table">
                             <thead>
@@ -31,7 +43,7 @@
                                   </td>
                                   <td><div class="pending">PENDING</div></td>
                                   <td>
-                                        <button mat-stroked-button color="primary">   <mat-icon>folder_open</mat-icon> Open </button>
+                                        <button mat-stroked-button color="primary" (click)="open()">   <mat-icon>folder_open</mat-icon> Open </button>
                                     </td>
                               </tr>
                               

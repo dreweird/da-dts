@@ -17,6 +17,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <div #alertTerminal class="alert alert-success alert-dismissible " role="alert">
+      <strong>Sample Document 2019 (2019-0805-0340-0001) has been
+          tagged as terminal.</strong>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert3()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
       <div #printSection>
         <mat-card>
           <table class="table">
@@ -54,8 +61,12 @@
                 </td>
               </tr>
               <tr>
-                <th scope="row">File</th>
-                <td>: docSample.pdf</td>
+                <th scope="row">Status</th>
+                <td>: <strong>
+                    <span class="available">AVAILABLE</span>
+                    <span class="pending">PENDING</span>
+                    <span class="terminal">TERMINAL</span>
+                </strong></td>
               </tr>
               <tr>
                 <th scope="row">QR-Code</th>
@@ -65,6 +76,7 @@
               </tr>
             </tbody>
           </table>
+          
         </mat-card>
       </div>
 
