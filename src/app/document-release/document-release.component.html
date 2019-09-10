@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    <div class="col-md-12" [ngClass]="routeAnimationsElements">
+      <h1>Release Document</h1>
+
+
+      <mat-card>
+        <table class="table">
+
+          <tbody>
+            <tr>
+              <th scope="row">Title</th>
+              <td>: Sample Document 2019 </td>
+            </tr>
+            <tr>
+              <th scope="row">Tracking Number</th>
+              <td>: 2019-0805-0340-0001</td>
+            </tr>
+
+            <tr>
+              <th scope="row">Originating Office</th>
+              <td>: TEST </td>
+            </tr>
+
+          </tbody>
+        </table>
+        <mat-form-field class="example-full-width">
+          <mat-label>Action</mat-label>
+          <mat-select required>
+            <mat-option *ngFor="let a of actions" [value]="a.value">
+              {{a.value}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Remarks" #remarks maxlength="500" required>
+
+          <mat-hint align="end">{{remarks.value.length}} / 500</mat-hint>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="File (optional)">
+
+          <mat-hint> <strong>-Saved as a new version of the file, if any - Allowed Formats: PDF, JPG, PNG - Maximum
+              Size: 10 MB
+              - You can upload larger files via Google Drive and then include the link in the remarks <br>
+            </strong> </mat-hint>
+
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Attachment (optional)">
+
+          <mat-hint> <strong> - Allowed Formats: PDF, JPG, PNG - Maximum Size: 10 MB
+              - You can upload larger files via Google Drive and then include the link in the remarks
+            </strong> </mat-hint>
+
+        </mat-form-field>
+        <section>
+          <br>
+
+          <button mat-stroked-button color="primary" (click)="onRelease()">Release Document </button>
+        </section>
+        </mat-card>
+    </div>
+  </div>
+</div>

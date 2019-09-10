@@ -54,5 +54,13 @@ export class MainComponent implements OnInit {
   closeAlert(){
     this.receive_alert = false;
   }
+  onRelease(id){
+    this.router.navigate(['/home/onrelease', this.tracking_number]);
+  }
+
+  onTrack(){
+    this.router.navigate(['/home/track', this.tracking_number]);
+  }
+
 
 }

@@ -26,6 +26,7 @@ export class DocumentViewComponent implements OnInit {
   @ViewChild('alertinfo', {static: false}) private alertinfo: ElementRef;
   @ViewChild('alertsuccess', {static: false}) private alertsuccess: ElementRef;
   @ViewChild('printSection', {static: false}) private printSection: ElementRef;
+  @ViewChild('alertTerminal', {static: false}) private alertTerminal: ElementRef;
   myAngularxQrCode: string;
 
   constructor(public dialog: MatDialog, private dataService: DataService,private route: ActivatedRoute, private snackBar: MatSnackBar) { 
@@ -57,6 +58,10 @@ export class DocumentViewComponent implements OnInit {
 
   closeAlert2(){
     this.alertinfo.nativeElement.remove();
+  }
+
+  closeAlert3(){
+    this.alertTerminal.nativeElement.remove();
   }
 
   onPrint(){

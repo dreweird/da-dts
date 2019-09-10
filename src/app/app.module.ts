@@ -10,14 +10,16 @@ import { HomeComponent } from './home/home.component';
 import { AnimationsService } from './_animations';
 import { MainComponent } from './main/main.component';
 import { AddDocumentComponent, DialogOnFinalize } from './add-document/add-document.component';
-import { DocumentComponent } from './document/document.component';
+import { DocumentComponent, DialogOnDelete } from './document/document.component';
 
-import { DocumentViewComponent, DialogOnPrint } from './document-view/document-view.component';
+import { DocumentViewComponent } from './document-view/document-view.component';
 import { AuthService } from './_services/index.service';
 
 
 import { QRCodeModule } from 'angularx-qrcode';
 import { DocumentPendingComponent } from './document-pending/document-pending.component';
+import { DocumentReleaseComponent } from './document-release/document-release.component';
+import { DocumentTrackComponent, DialogOnTrack } from './document-track/document-track.component';
 
 
 @NgModule({
@@ -30,7 +32,11 @@ import { DocumentPendingComponent } from './document-pending/document-pending.co
     DialogOnFinalize,
     DocumentComponent,
     DocumentViewComponent,
-    DocumentPendingComponent
+    DocumentPendingComponent,
+    DocumentReleaseComponent,
+    DialogOnDelete,
+    DocumentTrackComponent,
+    DialogOnTrack
   ],
   imports: [
     BrowserModule,
@@ -40,7 +46,7 @@ import { DocumentPendingComponent } from './document-pending/document-pending.co
     QRCodeModule
   ],
 
- entryComponents: [DialogOnFinalize],
+ entryComponents: [DialogOnFinalize, DialogOnDelete, DialogOnTrack],
  providers: [AnimationsService, AuthService],
  bootstrap: [AppComponent]
 })
