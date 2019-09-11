@@ -38,6 +38,10 @@ export class DocumentComponent implements OnInit {
   track(){
     this.router.navigate(['/home/track', this.tracking_number]);
   }
+
+  print(){
+    this.router.navigate(['/home/doc', this.tracking_number]);
+  }
 }
 
 @Component({
