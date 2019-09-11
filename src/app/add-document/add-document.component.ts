@@ -56,6 +56,9 @@ export class AddDocumentComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.tracking_number = params['id']; 
     });
+    this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
+      console.log(response);
+    };
   }
 
   onDraft(){
