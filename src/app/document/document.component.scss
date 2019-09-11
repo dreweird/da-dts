@@ -17,6 +17,13 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
     color: mat-color($accent) !important;
   }
 
+  .draft{
+    color: brown;
+  }
+  .terminal {
+    color: green;
+  }
+
   #notif {
     background-color: Transparent;
     background-repeat:no-repeat;
@@ -30,4 +37,20 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
 }
 .pending {
   color: red;
+}
+
+
+tbody {
+  display:block;
+  height:300px;
+  overflow:auto;
+}
+thead, tbody tr {
+  display:table;
+  width:100%;
+  table-layout:fixed;/* even columns width , fix width of table too*/
+}
+
+thead {
+  width: calc( 100% - 1em )/* scrollbar is average 1em/16px width, remove it from thead width */
 }

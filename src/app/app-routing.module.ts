@@ -24,7 +24,7 @@ const routes: Routes = [
       { path: 'onrelease/:id', component: DocumentReleaseComponent },
       { path: 'track/:id', component: DocumentTrackComponent },
     ]},
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
