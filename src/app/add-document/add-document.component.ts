@@ -3,7 +3,7 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '../_animations';
 import { ActivatedRoute } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormArray, FormBuilder} from '@angular/forms';
 import { DataService } from '../_services/index.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -39,24 +39,43 @@ export class AddDocumentComponent implements OnInit {
   ];
 
   constructor(private route: ActivatedRoute, public dialog: MatDialog, private router: Router, private dataService: DataService, private snackBar: MatSnackBar) { 
+  }
+
+  ngOnInit() {
+    // create checkbox group
+    let checkboxGroup = new FormArray(this.for.map(item => new FormGroup({
+      id: new FormControl(item.index),
+      text: new FormControl(item.value),
+      checkbox: new FormControl(false)
+    })));
+
+    // create a hidden reuired formControl to keep status of checkbox group
+    let hiddenControl = new FormControl(this.mapItems(checkboxGroup.value), Validators.required);
+    // update checkbox group's value to hidden formcontrol
+    checkboxGroup.valueChanges.subscribe((v) => {
+      hiddenControl.setValue(this.mapItems(v));
+    });
+
     this.documentForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
       type: new FormControl('', [Validators.required]),
       remarks: new FormControl('', [Validators.required]),
       file: new FormControl('', []),
-      foo: new FormControl('', [])
+      items: checkboxGroup,
+      selectedItems: hiddenControl
     });
-  }
-  ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.tracking_number = params['id']; 
     });
   }
 
+  mapItems(items) {
+    let selectedItems = items.filter((item) => item.checkbox).map((item) => item.id);
+    return selectedItems.length ? selectedItems : null;
+  }
+
   onDraft(){
-    console.log(this.for_);
-    console.log(this.tracking_number);
-    console.log(this.documentForm.value);
     this.dataService.addDoc(this.documentForm.value,this.tracking_number,0)
     .subscribe(data => {
       this.snackBar.open('Document saved as draft.', '', {duration: 3000,});
