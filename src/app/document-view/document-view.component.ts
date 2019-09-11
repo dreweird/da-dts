@@ -35,6 +35,7 @@ export class DocumentViewComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.tracking_number = params['id']; 
+      this.myAngularxQrCode = this.tracking_number;
     });
     this.dataService.getDoc(this.tracking_number).subscribe(data => {
       this.snackBar.open('Document fetched successfully.', '', {duration: 3000,});
