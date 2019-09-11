@@ -1,0 +1,158 @@
+<div class="container">
+        <br>
+        <mat-card>
+        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+            
+                <div class="col-md-8">
+                
+                            <mat-card-title>Sample Document 2019 <code>Unclassified</code></mat-card-title>
+                
+                   
+           
+                </div>
+                <div class="col-md-4">
+                        <button mat-stroked-button color="accent" (click)="terminal()">
+                                <mat-icon>label</mat-icon> Tag as Terminal
+                              </button>
+                              <button mat-stroked-button color="primary" (click)="release()">
+                                    <mat-icon>arrow_upward</mat-icon> Release
+                                  </button>
+               
+                    </div>
+               
+          
+              </div>
+            </mat-card>   
+  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    <div class="col-md-12" [ngClass]="routeAnimationsElements">
+        <mat-card>
+            
+            <hr>
+            <table class="table">
+
+                    <tbody>
+             
+                      <tr>
+                        <th scope="row">Tracking Number</th>
+                        <td>: 2019-0805-0340-0001</td>
+                        <td rowspan="5"> <qrcode class="right" qrdata="myAngularxQrCode" [size]="150" [level]="'M'"></qrcode></td>
+                      </tr>
+          
+                      <tr>
+                        <th scope="row">Originating Office</th>
+                        <td>: PMED </td>
+                      </tr>
+                      <tr>
+                            <th scope="row">Date Created</th>
+                            <td>: 08/05/2019 02:00 PM </td>
+                          </tr>
+                          <tr>
+                                <th scope="row">For</th>
+                                <td>: your information </td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">Remarks</th>
+                                    <td>: None </td>
+                                  </tr>
+                    </tbody>
+                  </table>
+
+         <br>
+         <table class="table">
+                <thead>
+                        <tr>
+                          <th scope="col">Version</th>
+                          <th scope="col">File</th>
+                          <th scope="col">Date Uploaded</th>
+                          <th scope="col">Uploaded by</th>
+                          <th></th>
+                        </tr>
+                      </thead>
+                <tbody>
+         
+                  <tr>
+                   
+                    <td>1.0</td>
+                    <td><a [routerLink] = "'/products'">
+                        FIle01.pdf
+                      </a></td>
+                      <td>08/05/2019 02:10 PM</td>
+                      <td>sample@gmail.com</td>
+                  </tr>
+      
+  
+                </tbody>
+              </table>
+              <br>
+              <table class="table">
+                    <thead>
+                            <tr>
+                              <th scope="col">Office</th>
+                              <th scope="col">In</th>
+                              <th scope="col">Out</th>
+                              <th scope="col">Time Elapsed</th>
+                              <th scope="col">Action</th>
+                              <th scope="col">Remarks</th>
+                              <th scope="col">Attachment</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                    <tbody>
+             
+                      <tr>
+                       
+                        <td>Admin</td>
+                        <td>
+                            <div>Aug 6, 2019, 5:22 p.m.</div>
+                            <div>user@gmail.com</div>
+                        </td>
+                        <td>
+                                <div>Aug 6, 2019, 5:33 p.m.</div>
+                                <div>user@gmail.com</div>
+                        </td>
+                        <td>0:01:31</td>
+                        <td>approved</td>
+                        <td>none</td>
+                        <td><a [routerLink] = "'/products'">
+                            attachedFile.pdf
+                          </a></td>
+                      </tr>
+                      <tr>
+                       
+                            <td>TEST</td>
+                            <td>
+                                <div>Aug 6, 2019, 5:34 p.m.</div>
+                                <div>user@gmail.com</div>
+                            </td>
+                            <td>
+                                    <div>Aug 6, 2019, 5:35 p.m.</div>
+                                    <div>user@gmail.com</div>
+                            </td>
+                            <td>0:01:08</td>
+                            <td>approved</td>
+                            <td>none</td>
+                            <td>No file</td>
+                          </tr>
+                          <tr>
+                       
+                                <td>Admin</td>
+                                <td>
+                                    <div>Aug 6, 2019, 5:42 p.m.</div>
+                                    <div>user@gmail.com</div>
+                                </td>
+                                <td colspan="4">
+                                   <code class="terminal">Terminal</code>
+                                </td>
+                      
+                                <td>No file</td>
+                              </tr>
+          
+      
+                    </tbody>
+                  </table>
+                  <br>
+        </mat-card>
+    </div>
+  </div>
+</div>
+<br><br>

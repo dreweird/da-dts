@@ -6,7 +6,7 @@
                 received successfully.
         </strong> Don't forget to tag this document as <strong>TERMINAL</strong> 
         in case your office is the end of its paper trail.
-        <button type="button" class="alert-button close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
+        <button id="alertReceived" type="button" class="alert-button close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
                 <span aria-hidden="true">&times;</span>
         </button>
         </div>
@@ -18,7 +18,7 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Tracking Number">
         </mat-form-field>
-        <button mat-button color="accent">
+        <button mat-button color="accent" (click)="onTrack()">
           <mat-icon>navigation</mat-icon> Track
         </button>
       </mat-card>
@@ -57,7 +57,7 @@
         <mat-form-field class="example-full-width">
           <input matInput placeholder="Tracking Number">
         </mat-form-field>
-        <button mat-button color="accent">
+        <button mat-button color="accent" (click)="onRelease(track_id)">
           <mat-icon>arrow_upward</mat-icon> Release
         </button>
       </mat-card>

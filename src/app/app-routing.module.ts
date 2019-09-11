@@ -7,6 +7,8 @@ import { AddDocumentComponent } from './add-document/add-document.component';
 import { DocumentComponent } from './document/document.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { DocumentPendingComponent } from './document-pending/document-pending.component';
+import { DocumentReleaseComponent } from './document-release/document-release.component';
+import { DocumentTrackComponent } from './document-track/document-track.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -19,6 +21,8 @@ const routes: Routes = [
       { path: 'doc/:id', component: DocumentViewComponent },
       { path: 'onadd/:id', component: AddDocumentComponent },
       { path: 'pending', component: DocumentPendingComponent },
+      { path: 'onrelease/:id', component: DocumentReleaseComponent },
+      { path: 'track/:id', component: DocumentTrackComponent },
     ]},
   { path: '**', redirectTo: '' }
 ];
