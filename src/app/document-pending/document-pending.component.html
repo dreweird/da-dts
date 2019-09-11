@@ -1,55 +1,64 @@
 <div class="container">
-    <br>
-        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
-                <div class="col-md-8">
-                  <h1 class="main-heading">Pending Documents</h1>
-                </div>
-                <div class="col-md">
-                    <mat-form-field class="example-full-width">
-                        <span matPrefix> <mat-icon>search</mat-icon> &nbsp;</span>
-                        <input #txtSearch matInput placeholder="Search documents here...">
-                      </mat-form-field>
-                  </div>
-              </div>
-
-        <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
-          <div class="col-md-12">
-              <mat-card>
-                    <table class="table">
-                            <thead>
-                              <tr>
-                                <th scope="col">Document</th>
-                                <th scope="col">Tracking Number</th>
-                                <th scope="col">Originating Office</th>
-                                <th scope="col">Last Transaction</th>
-                                <th scope="col">Status</th>
-                                <th></th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <tr>
-    
-                                <td scope="row">Sample Document 2019
-                                    <pre>Unclassified</pre>
-                                </td>
-                                <td>2019-0805-0340-0001</td>
-                                <td> <strong>Test Office</strong>
-                                    <div>08/05/2019 02:00 PM</div>
-                                    <div>testoffice@gmail.com</div>
-                                  </td>
-                                  <td> <strong>RECEIVED by TEST</strong>
-                                    <div>08/06/2019 10:00 AM</div>
-                                    <div>testoffice@gmail.com</div>
-                                  </td>
-                                  <td><div class="pending">PENDING</div></td>
-                                  <td>
-                                        <button mat-stroked-button color="primary" (click)="open()">   <mat-icon>folder_open</mat-icon> Open </button>
-                                    </td>
-                              </tr>
-                              
-                            </tbody>
-                          </table>
-              </mat-card>
-              <br><br>
+  <br>
+  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    <div class="col-md-8">
+      <h1 class="main-heading">Pending Documents</h1>
     </div>
-      </div>
+    <div class="col-md">
+      <mat-form-field class="example-full-width">
+        <span matPrefix>
+          <mat-icon>search</mat-icon> &nbsp;
+        </span>
+        <input #txtSearch matInput placeholder="Search documents here...">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row justify-content-between" [ngClass]="routeAnimationsElements">
+    <div class="col-md-12">
+      <mat-card>
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Document</th>
+                <th scope="col">Tracking Number</th>
+                <th scope="col">Originating Office</th>
+                <th scope="col">Last Transaction</th>
+                <th scope="col">Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+
+                <td scope="row">Sample Document 2019
+                  <pre>Unclassified</pre>
+                </td>
+                <td>2019-0805-0340-0001</td>
+                <td> <strong>Test Office</strong>
+                  <div>08/05/2019 02:00 PM</div>
+                  <div>testoffice@gmail.com</div>
+                </td>
+                <td> <strong>RECEIVED by TEST</strong>
+                  <div>08/06/2019 10:00 AM</div>
+                  <div>testoffice@gmail.com</div>
+                </td>
+                <td>
+                  <div class="pending">PENDING</div>
+                </td>
+                <td>
+                  <button mat-stroked-button color="primary" (click)="open()">
+                    <mat-icon>folder_open</mat-icon> Open
+                  </button>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+      </mat-card>
+      <br><br>
+    </div>
+  </div>

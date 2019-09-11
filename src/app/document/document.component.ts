@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DataService } from '../_services/index.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-document',
@@ -10,13 +13,19 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 export class DocumentComponent implements OnInit {
   tracking_number: any;
   delete_info: boolean = false;
+  draft: [];
 
-  constructor(private router: Router, public dialog: MatDialog) { 
+  constructor(private router: Router, public dialog: MatDialog, private dataService: DataService, private snackBar: MatSnackBar) { 
     this.tracking_number = '2019-0805-0340-0001';
   }
 
   ngOnInit() {
-    
+    this.dataService.getAllDoc().subscribe(data => {
+      this.snackBar.open('Document fetched successfully.', '', {duration: 3000,});
+      console.log(data);
+      this.draft = data;
+    },err=>{
+    });
   }
 
   closeAlert(){

@@ -20,4 +20,10 @@ export class DataService {
     var token = localStorage.getItem("token");
     return this.http.post<any>(url, {tracking_number,token} );
   }
+
+  getAllDoc(){
+    const url = `${this.BASE_URL}/getAllDoc`;
+    var token = localStorage.getItem("token");
+    return this.http.post<any>(url, {token} );
+  }
 }

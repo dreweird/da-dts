@@ -28,7 +28,7 @@ export class MainComponent implements OnInit {
       }else {
         console.log(data);
         this.code =  data.code;
-        this.ctr =  data.ctr;
+        this.ctr =  Number(data.ctr);
         var view_ctr="";
         if(this.ctr<10) view_ctr ="000"+(this.ctr+1);
         else if(this.ctr<100) view_ctr ="00"+(this.ctr+1);

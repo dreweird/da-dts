@@ -42,15 +42,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-
-                <td scope="row">Sample Document 2019
-                  <pre>Unclassified</pre>
+              <tr *ngFor="let doc of draft">
+                <td scope="row">{{doc.title}}
+                  <pre>{{doc.type}}</pre>
                 </td>
-                <td>2019-0805-0340-0001</td>
-                <td> <strong>Test Office</strong>
-                  <div>08/05/2019 02:00 PM</div>
-                  <div>testoffice@gmail.com</div>
+                <td>{{doc.doc_id}}</td>
+                <td> <strong>{{doc.name}}</strong>
+                  <div>{{doc.date_created}}</div>
+                  <div>{{doc.email}}</div>
                 </td>
                 <td> <ul>
                   <li>appropriate action</li>
@@ -98,7 +97,7 @@
                         <th scope="col">Document</th>
                         <th scope="col">Tracking Number</th>
                         <th scope="col">Originating Office</th>
-                        <th scope="col">Last Transaction</th>
+                        <th scope="col">STATUS</th>
                         <th></th>
                       </tr>
                     </thead>
@@ -113,9 +112,10 @@
                             <div>08/05/2019 02:00 PM</div>
                             <div>testoffice@gmail.com</div>
                           </td>
-                          <td> <strong>RECEIVED by TEST</strong>
-                            <div>08/06/2019 10:00 AM</div>
-                            <div>testoffice@gmail.com</div>
+                          <td>  <strong>
+                              <span class="available">AVAILABLE</span>
+                              <span class="pending">PENDING</span>                         
+                          </strong>
                           </td>
                 
                           <td>

@@ -22,6 +22,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 
 import { MatDialogModule } from '@angular/material/dialog';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressBarModule
 
   ],
   declarations: [],
@@ -74,7 +76,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressBarModule
 
 
  
