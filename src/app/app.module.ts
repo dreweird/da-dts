@@ -20,7 +20,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { DocumentPendingComponent } from './document-pending/document-pending.component';
 import { DocumentReleaseComponent } from './document-release/document-release.component';
 import { DocumentTrackComponent, DialogOnTrack } from './document-track/document-track.component';
-
+import { FileSelectDirective} from 'ng2-file-upload';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { DocumentTrackComponent, DialogOnTrack } from './document-track/document
     DocumentReleaseComponent,
     DialogOnDelete,
     DocumentTrackComponent,
-    DialogOnTrack
+    DialogOnTrack,
+    FileSelectDirective
   ],
   imports: [
     BrowserModule,

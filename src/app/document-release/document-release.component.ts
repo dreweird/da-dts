@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-document-release',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./document-release.component.scss']
 })
 export class DocumentReleaseComponent implements OnInit {
+
+  uploader:FileUploader = new FileUploader({url:'http://172.16.130.10:4001/upload', allowedFileType: ['image', 'pdf']});
+  uploader2:FileUploader = new FileUploader({url:'http://172.16.130.10:4001/upload', allowedFileType: ['image', 'pdf']});
 
   actions = [
     {value: 'Approved'},
@@ -17,7 +21,14 @@ export class DocumentReleaseComponent implements OnInit {
   ];
 
 
-  constructor() { }
+  constructor() {
+    this.uploader.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+    };
+    this.uploader2.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+    }
+   }
 
   ngOnInit() {
   }

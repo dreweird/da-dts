@@ -25,3 +25,9 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
     overflow: hidden;
     outline:none;
 }
+.available {
+  color: mat-color($primary) !important;
+}
+.pending {
+  color: red;
+}
