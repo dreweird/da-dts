@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import {FormControl, FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { DataService } from '../_services/index.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FileUploader } from 'ng2-file-upload';
 
 @Component({
   selector: 'app-add-document',
@@ -14,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AddDocumentComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
+  uploader:FileUploader = new FileUploader({url:'http://172.16.130.10:4001/upload', allowedFileType: ['image', 'pdf']});
   
   documentForm: FormGroup;
   tracking_number: any;
@@ -46,6 +48,9 @@ export class AddDocumentComponent implements OnInit {
       file: new FormControl('', []),
       foo: new FormControl('', [])
     });
+    this.uploader.onBeforeUploadItem = (item) => {
+      item.withCredentials = false;
+    }
   }
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -60,12 +65,13 @@ export class AddDocumentComponent implements OnInit {
     this.dataService.addDoc(this.documentForm.value,this.tracking_number,0)
     .subscribe(data => {
       this.snackBar.open('Document saved as draft.', '', {duration: 3000,});
-      this.router.navigate(['/home/doc', this.tracking_number]);
+      this.router.navigate(['/home/doc']);
     },err=>{
       this.snackBar.open('Error: Please see console.', '', {duration: 3000,});
     });
   }
   onFinalize(){
+
     this.dialog.open(DialogOnFinalize, {
       width: '450px'
     }).afterClosed().subscribe(result=> {
