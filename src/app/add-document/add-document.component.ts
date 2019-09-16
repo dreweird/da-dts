@@ -17,9 +17,12 @@ export class AddDocumentComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   uploader:FileUploader = new FileUploader({url:'http://172.16.130.10:4001/upload', allowedFileType: ['image', 'pdf']});
   
+  fileName:any;
+  temp_fileName:any;
   documentForm: FormGroup;
   tracking_number: any;
   for_: [any];
+  temp_for_: [any];
   types = [
     {value: 'Purchase Request'},
     {value: 'Inventory and Inspection Report'},
@@ -47,6 +50,9 @@ export class AddDocumentComponent implements OnInit {
   }
 
   ngOnInit() {
+    
+    var temp = this.dataService.getTempDoc();
+    
     // create checkbox group
     let checkboxGroup = new FormArray(this.for.map(item => new FormGroup({
       id: new FormControl(item.index),
@@ -72,10 +78,47 @@ export class AddDocumentComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.tracking_number = params['id']; 
+      if(temp!=undefined){
+        console.log(temp.doc_id+" = "+this.tracking_number);
+        if(temp.doc_id==this.tracking_number){
+          console.log(temp);
+          this.temp_fileName = temp.file;
+          this.temp_for_ = temp.for_;
+          this.documentForm = new FormGroup({
+            title: new FormControl(temp.title, [Validators.required]),
+            type: new FormControl(temp.type, [Validators.required]),
+            remarks: new FormControl(temp.remarks, [Validators.required]),
+            file: new FormControl('', []),
+            items: checkboxGroup,
+            selectedItems: hiddenControl
+          });
+        }
+      }
     });
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
       console.log(response);
+      this.fileName=(JSON.parse(response).filename);
+      this.dataService.addDoc(this.documentForm.value,this.tracking_number,0,this.fileName)
+      .subscribe(data => {
+        this.snackBar.open('Document saved as draft.', '', {duration: 3000,});
+        this.router.navigate(['/home/doc']);
+      },err=>{
+        this.snackBar.open('Error: Please see console.', '', {duration: 3000,});
+      });
     };
+  }
+  
+  check(val){
+    var bool = false;
+    //console.log(this.temp_for_);
+    //console.log(val);
+    if(this.temp_for_!=undefined){
+      this.temp_for_.forEach(element => {
+        if(val == element.desc){ bool = true; console.log(element); 
+          return true;}
+      });
+    }
+    console.log()
   }
 
   mapItems(items) {
@@ -84,13 +127,8 @@ export class AddDocumentComponent implements OnInit {
   }
 
   onDraft(){
-    this.dataService.addDoc(this.documentForm.value,this.tracking_number,0)
-    .subscribe(data => {
-      this.snackBar.open('Document saved as draft.', '', {duration: 3000,});
-      this.router.navigate(['/home/doc']);
-    },err=>{
-      this.snackBar.open('Error: Please see console.', '', {duration: 3000,});
-    });
+    this.uploader.uploadAll();
+    
   }
   onFinalize(){
 
@@ -98,7 +136,7 @@ export class AddDocumentComponent implements OnInit {
       width: '450px'
     }).afterClosed().subscribe(result=> {
       if(result){
-        this.dataService.addDoc(this.documentForm.value,this.tracking_number,1)
+        this.dataService.addDoc(this.documentForm.value,this.tracking_number,1,this.fileName)
         .subscribe(data => {
           this.snackBar.open('Document saved as final.', '', {duration: 3000,});
           this.router.navigate(['/home/doc', this.tracking_number]);
