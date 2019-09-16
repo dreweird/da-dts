@@ -3,7 +3,7 @@
         <div class="col-md-12">
           <h1 class="main-heading">Office Documents</h1>
           <div *ngIf="delete_info" #alertsuccess class="alert alert-success alert-dismissible" role="alert">
-              <strong>Sample Document 2019 (2019-0805-0340-0001) has been
+              <strong>{{delete_id_name}} has been
                 deleted successfully.
               </strong>
               <button type="button" id="notif" class="close" data-dismiss="alert" aria-label="Close" (click)="closeAlert()">
@@ -42,127 +42,28 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-
-                <td scope="row">Sample Document 2019
-                  <pre>Unclassified</pre>
+              <tr *ngFor="let doc of draft; let i = index">
+                <td scope="row">{{doc.title}}
+                  <pre>{{doc.type}}<br><a href="#">{{doc.file}}</a></pre>
                 </td>
-                <td>2019-0805-0340-0001</td>
-                <td> <strong>Test Office</strong>
-                  <div>08/05/2019 02:00 PM</div>
-                  <div>testoffice@gmail.com</div>
+                <td>{{doc.doc_id}}</td>
+                <td> <strong>{{doc.name}}</strong>
+                  <div>{{dateFormat(doc.date_created)}}</div>
+                  <div>{{doc.email}}</div>
                 </td>
                 <td> <ul>
-                  <li>appropriate action</li>
-                  <li>follow-up</li>
+                  <li *ngFor="let action of doc.for_">{{action.desc}}</li>
                 </ul>
                 </td>
                 <td>
-                  <button mat-stroked-button color="primary" (click)="edit()">
+                  <button mat-stroked-button color="primary" (click)="edit(doc)">
                     <mat-icon>edit</mat-icon> Edit
                   </button>
-                  <button mat-stroked-button color="accent" (click)="delete()">
+                  <button mat-stroked-button color="accent" (click)="delete(i,doc)">
                     <mat-icon>delete</mat-icon> Delete
                   </button>
                 </td>
               </tr>
-              <tr>
-
-                  <td scope="row">Sample Document 2019
-                    <pre>Unclassified</pre>
-                  </td>
-                  <td>2019-0805-0340-0001</td>
-                  <td> <strong>Test Office</strong>
-                    <div>08/05/2019 02:00 PM</div>
-                    <div>testoffice@gmail.com</div>
-                  </td>
-                  <td> <ul>
-                    <li>appropriate action</li>
-                    <li>follow-up</li>
-                  </ul>
-                  </td>
-                  <td>
-                    <button mat-stroked-button color="primary" (click)="edit()">
-                      <mat-icon>edit</mat-icon> Edit
-                    </button>
-                    <button mat-stroked-button color="accent" (click)="delete()">
-                      <mat-icon>delete</mat-icon> Delete
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-
-                    <td scope="row">Sample Document 2019
-                      <pre>Unclassified</pre>
-                    </td>
-                    <td>2019-0805-0340-0001</td>
-                    <td> <strong>Test Office</strong>
-                      <div>08/05/2019 02:00 PM</div>
-                      <div>testoffice@gmail.com</div>
-                    </td>
-                    <td> <ul>
-                      <li>appropriate action</li>
-                      <li>follow-up</li>
-                    </ul>
-                    </td>
-                    <td>
-                      <button mat-stroked-button color="primary" (click)="edit()">
-                        <mat-icon>edit</mat-icon> Edit
-                      </button>
-                      <button mat-stroked-button color="accent" (click)="delete()">
-                        <mat-icon>delete</mat-icon> Delete
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-
-                      <td scope="row">Sample Document 2019
-                        <pre>Unclassified</pre>
-                      </td>
-                      <td>2019-0805-0340-0001</td>
-                      <td> <strong>Test Office</strong>
-                        <div>08/05/2019 02:00 PM</div>
-                        <div>testoffice@gmail.com</div>
-                      </td>
-                      <td> <ul>
-                        <li>appropriate action</li>
-                        <li>follow-up</li>
-                      </ul>
-                      </td>
-                      <td>
-                        <button mat-stroked-button color="primary" (click)="edit()">
-                          <mat-icon>edit</mat-icon> Edit
-                        </button>
-                        <button mat-stroked-button color="accent" (click)="delete()">
-                          <mat-icon>delete</mat-icon> Delete
-                        </button>
-                      </td>
-                    </tr>
-                    <tr>
-
-                        <td scope="row">Sample Document 2019
-                          <pre>Unclassified</pre>
-                        </td>
-                        <td>2019-0805-0340-0001</td>
-                        <td> <strong>Test Office</strong>
-                          <div>08/05/2019 02:00 PM</div>
-                          <div>testoffice@gmail.com</div>
-                        </td>
-                        <td> <ul>
-                          <li>appropriate action</li>
-                          <li>follow-up</li>
-                        </ul>
-                        </td>
-                        <td>
-                          <button mat-stroked-button color="primary" (click)="edit()">
-                            <mat-icon>edit</mat-icon> Edit
-                          </button>
-                          <button mat-stroked-button color="accent" (click)="delete()">
-                            <mat-icon>delete</mat-icon> Delete
-                          </button>
-                        </td>
-                      </tr>
-
             </tbody>
           </table>
 

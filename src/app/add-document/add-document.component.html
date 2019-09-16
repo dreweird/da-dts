@@ -18,30 +18,29 @@
               <mat-form-field  class="example-full-width">
                     <mat-label>Type</mat-label>
                     <mat-select formControlName="type">
-                      <mat-option *ngFor="let type of types" [value]="type.value">
+                      <mat-option *ngFor="let type of types" [value]="type.value" >
                         {{type.value}}
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
                   <label class="example-margin">For:</label>
-                  <section class="example-margin" *ngFor="let f of for">
-                    
-                        <mat-checkbox value = "{{f.index}}" formControlName="foo">{{f.value}} </mat-checkbox>
+                  <section class="example-margin"  *ngFor="let control of documentForm.controls.items.controls; let i = index;" [formGroup]="control">
+                    <mat-checkbox formControlName="checkbox" id="{{ control.controls.id.value }}" [checked]="check(control.controls.text.value)">{{control.controls.text.value}}  </mat-checkbox>
                   </section>
                   <mat-form-field class="example-full-width">
                         <input matInput placeholder="Remarks" #remarks formControlName="remarks" maxlength="500" required>
               
-                        <mat-hint align="end">{{remarks.value.length}} / 500</mat-hint>
+                        <mat-hint align="end">{{remarks.value}} / 500</mat-hint>
                       </mat-form-field> 
                       <div class="form-group">
-                          <label for="single">File (optional)</label><br>
+                          <label for="single">File (optional) <a href="#">{{temp_fileName}}</a></label><br>
                            
                             <input type="file" class="form-control" accept=".pdf, image/jpg, image/png" formControlName="file" ng2FileSelect [uploader]="uploader" />                                  
       
-                            <div *ngIf="uploader.queue.length">
+                            <!-- <div *ngIf="uploader.queue.length">
                                 <mat-progress-bar mode="determinate" [value]="uploader.progress"></mat-progress-bar>
                               <button mat-stroked-button color="primary" (click)="uploader.uploadAll()"> <mat-icon>cloud_upload</mat-icon> Upload</button>
-                            </div>
+                            </div> -->
                             <span class="hint"> <strong>-Allowed Formats: PDF, JPG, PNG - Maximum Size: 10 MB
                                 - You can upload larger files via Google Drive and then include the link in the remarks
                             </strong> </span>
